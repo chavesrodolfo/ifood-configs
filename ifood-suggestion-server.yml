@@ -12,3 +12,11 @@ eureka:
       defaultZone: http://${eureka.instance.hostname}:${eureka.instance.port}/eureka/
   server:
     wait-time-in-ms-when-sync-empty: 3000
+
+spotify:
+  client:
+    id: f8b486e527c2410c804e56b7f7dbc584
+    secret: d887068aa5954cefb9dea84088908964
+
+open-weather:
+  app-id: 867129315bff9e2983effe4f0fabf04c
