@@ -1,22 +1,30 @@
 server:
-  port: 9093
+  port: ${PORT:9093}
 
 eureka:
-  instance:
-    hostname: localhost
-    port: 9091
   client:
-    registerWithEureka: true
-    fetchRegistry: false
     serviceUrl:
-      defaultZone: http://${eureka.instance.hostname}:${eureka.instance.port}/eureka/
-  server:
-    wait-time-in-ms-when-sync-empty: 3000
+      defaultZone: ${EUREKA_URL:http://localhost:9091}/eureka/
+  instance:
+    leaseRenewalIntervalInSeconds: 1
+    leaseExpirationDurationInSeconds: 2
+
+# Ribbon config
+ribbon:
+  eureka:
+    enabled: true
 
 spotify:
-  client:
-    id: f8b486e527c2410c804e56b7f7dbc584
-    secret: d887068aa5954cefb9dea84088908964
+  api:
+    url:
+      token: https://accounts.spotify.com/api/token
+      recommendations: https://api.spotify.com/v1/recommendations
+    client:
+      id: f8b486e527c2410c804e56b7f7dbc584
+      secret: d887068aa5954cefb9dea84088908964
 
 open-weather:
-  app-id: 867129315bff9e2983effe4f0fabf04c
+  api:
+    url: http://api.openweathermap.org/data/2.5/weather
+    units: metric
+    app-id: 867129315bff9e2983effe4f0fabf04c
