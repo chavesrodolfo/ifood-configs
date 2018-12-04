@@ -1,27 +1,21 @@
 server:
-  port: ${PORT:9092}
-
+    port: '${PORT:9092}'
 eureka:
-  client:
-    serviceUrl:
-      defaultZone: ${EUREKA_URL:http://localhost:9091}/eureka/
-    registerWithEureka: false
-
-# Ribbon config
+    client:
+        serviceUrl:
+            defaultZone: '${EUREKA_URL:http://localhost:9091}/eureka/'
+        registerWithEureka: false
 ribbon:
-  eureka:
-    enabled: true
-
-# Zuul config
+    eureka:
+        enabled: true
 zuul:
-  prefix: /api
-  routes:
-    articles:
-      path: /suggestions/tracks/**
-      serviceId: ifood-suggestion-server
-
+    prefix: /api
+    routes:
+        articles:
+            path: '/suggestions/tracks/**'
+            serviceId: ifood-suggestion-server
 endpoints:
-  routes:
-    sensitive: false
-  trace:
-    sensitive: false
+    routes:
+        sensitive: false
+    trace:
+        sensitive: false
